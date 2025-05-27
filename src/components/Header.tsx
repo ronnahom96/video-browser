@@ -100,14 +100,13 @@ const Header: React.FC<HeaderProps> = ({
 
       <Box
         sx={{
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" },
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           gap: 2,
         }}
       >
-        {/* Search Filter */}
         <TextField
-          fullWidth
           label='Search videos'
           variant='outlined'
           placeholder='Search by artist or title'
@@ -118,8 +117,7 @@ const Header: React.FC<HeaderProps> = ({
           }}
         />
 
-        {/* Year Filter */}
-        <FormControl fullWidth>
+        <FormControl sx={{ minWidth: 200 }}>
           <InputLabel id='year-select-label'>Year</InputLabel>
           <Select
             labelId='year-select-label'
@@ -140,8 +138,7 @@ const Header: React.FC<HeaderProps> = ({
           </Select>
         </FormControl>
 
-        {/* Genre Filter */}
-        <FormControl fullWidth>
+        <FormControl sx={{ minWidth: 200 }}>
           <InputLabel id='genre-select-label'>Genres</InputLabel>
           <Select
             labelId='genre-select-label'
@@ -149,9 +146,7 @@ const Header: React.FC<HeaderProps> = ({
             multiple
             value={selectedGenres}
             onChange={handleGenresChange}
-            input={
-              <OutlinedInput id='select-multiple-genres\' label='Genres' />
-            }
+            input={<OutlinedInput id='select-multiple-genres' label='Genres' />}
             renderValue={(selected) => (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                 {selected.map((genreId) => (
