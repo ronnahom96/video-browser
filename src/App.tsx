@@ -1,31 +1,30 @@
-import React from 'react';
-import { Container, Box, CssBaseline, ThemeProvider } from '@mui/material';
-import Header from './components/Header';
-import VideoList from './components/VideoList';
-import { useVideos } from './hooks/useVideos';
-import theme from './theme/theme';
+import { Container, Box, CssBaseline, ThemeProvider } from "@mui/material";
+import Header from "./components/Header";
+import VideoList from "./components/VideoList";
+import { useVideos } from "./hooks/useVideos";
+import theme from "./theme/theme";
 
 function App() {
-  const { 
-    filteredVideos, 
-    genres, 
+  const {
+    filteredVideos,
+    genres,
     years,
-    searchTerm, 
-    selectedYear, 
+    searchTerm,
+    selectedYear,
     selectedGenres,
-    loading, 
+    loading,
     error,
-    setSearchTerm, 
-    setSelectedYear, 
-    setSelectedGenres
+    setSearchTerm,
+    setSelectedYear,
+    setSelectedGenres,
   } = useVideos();
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container maxWidth='lg'>
         <Box sx={{ py: 4 }}>
-          <Header 
+          <Header
             searchTerm={searchTerm}
             selectedYear={selectedYear}
             selectedGenres={selectedGenres}
@@ -35,11 +34,7 @@ function App() {
             onYearChange={setSelectedYear}
             onGenresChange={setSelectedGenres}
           />
-          <VideoList 
-            videos={filteredVideos} 
-            loading={loading} 
-            error={error} 
-          />
+          <VideoList videos={filteredVideos} loading={loading} error={error} />
         </Box>
       </Container>
     </ThemeProvider>
