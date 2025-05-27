@@ -75,13 +75,12 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <Box
       sx={{
-        mb: 4,
         pb: 3,
         borderBottom: "1px solid",
         borderColor: "divider",
         display: "flex",
         flexDirection: "column",
-        gap: 3,
+        gap: 1,
       }}
     >
       <Typography
@@ -107,18 +106,17 @@ const Header: React.FC<HeaderProps> = ({
         }}
       >
         <TextField
-          label='Search videos'
+          label='Search Video...'
           variant='outlined'
-          placeholder='Search by artist or title'
           value={searchTerm}
           onChange={handleSearchChange}
           InputProps={{
-            sx: { borderRadius: 1 },
+            sx: { width: 175 },
           }}
         />
 
-        <FormControl sx={{ minWidth: 200 }}>
-          <InputLabel id='year-select-label'>Year</InputLabel>
+        <FormControl sx={{ minWidth: 175 }}>
+          <InputLabel id='year-select-label'>Search by Year...</InputLabel>
           <Select
             labelId='year-select-label'
             id='year-select'
@@ -138,8 +136,8 @@ const Header: React.FC<HeaderProps> = ({
           </Select>
         </FormControl>
 
-        <FormControl sx={{ minWidth: 200 }}>
-          <InputLabel id='genre-select-label'>Genres</InputLabel>
+        <FormControl sx={{ minWidth: 175 }}>
+          <InputLabel id='genre-select-label'>Search by Genre...</InputLabel>
           <Select
             labelId='genre-select-label'
             id='genre-select'
