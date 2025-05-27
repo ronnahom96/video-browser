@@ -76,8 +76,6 @@ const Header: React.FC<HeaderProps> = ({
     <Box
       sx={{
         pb: 3,
-        borderBottom: "1px solid",
-        borderColor: "divider",
         display: "flex",
         flexDirection: "column",
         gap: 1,
@@ -89,7 +87,6 @@ const Header: React.FC<HeaderProps> = ({
         sx={{
           mb: 2,
           fontWeight: 700,
-          color: "text.primary",
           textAlign: "center",
           fontSize: { xs: "1.75rem", sm: "2.125rem" },
         }}

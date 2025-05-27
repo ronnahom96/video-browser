@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { Video } from "../types";
 
 interface VideoCardProps {
@@ -32,9 +32,11 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
           padding: "0 !important",
         }}
       >
-        <Typography variant='body2'>{video.title}</Typography>
-        <Typography variant='body2'>{video.artist}</Typography>
-        <Typography variant='body2'>{video.release_year}</Typography>
+        <Box py={0.5}>
+          <Typography variant='body2'>{video.title}</Typography>
+          <Typography variant='body2'>{video.artist}</Typography>
+          <Typography variant='body2'>{video.release_year}</Typography>
+        </Box>
       </CardContent>
     </Card>
   );
