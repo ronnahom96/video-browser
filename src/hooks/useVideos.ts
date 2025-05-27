@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Video, Genre } from "../types";
 import { fetchVideos } from "../api/videoApi";
+import { useDebounce } from "./useDebounce";
 
 interface UseVideosResult {
   videos: Video[];
@@ -26,6 +27,7 @@ export const useVideos = (): UseVideosResult => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   useEffect(() => {
     const loadVideos = async () => {
@@ -56,7 +58,7 @@ export const useVideos = (): UseVideosResult => {
     return videos.filter((video) => {
       const videoTitle = String(video.title || "").toLowerCase();
       const videoArtist = String(video.artist || "").toLowerCase();
-      const searchTermLower = searchTerm.toLowerCase().trim();
+      const searchTermLower = debouncedSearchTerm.toLowerCase().trim();
 
       const matchesSearch =
         searchTerm === "" ||
@@ -71,7 +73,7 @@ export const useVideos = (): UseVideosResult => {
 
       return matchesSearch && matchesYear && matchesGenre;
     });
-  }, [videos, searchTerm, selectedYear, selectedGenres]);
+  }, [videos, debouncedSearchTerm, searchTerm, selectedYear, selectedGenres]);
 
   const toggleGenre = (genreId: number) => {
     setSelectedGenres((prev) =>
