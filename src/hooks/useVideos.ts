@@ -49,7 +49,7 @@ export const useVideos = (): UseVideosResult => {
 
   const years = useMemo(() => {
     const uniqueYears = [...new Set(videos.map((video) => video.release_year))];
-    return uniqueYears.sort((a, b) => b - a); // Sort years in descending order
+    return uniqueYears.sort((a, b) => b - a);
   }, [videos]);
 
   const filteredVideos = useMemo(() => {
@@ -58,17 +58,14 @@ export const useVideos = (): UseVideosResult => {
       const videoArtist = String(video.artist || "").toLowerCase();
       const searchTermLower = searchTerm.toLowerCase().trim();
 
-      // Filter by search term (artist or title)
       const matchesSearch =
         searchTerm === "" ||
         videoArtist.includes(searchTermLower) ||
         videoTitle.includes(searchTermLower);
 
-      // Filter by year
       const matchesYear =
         selectedYear === null || video.release_year === selectedYear;
 
-      // Filter by genres
       const matchesGenre =
         selectedGenres.length === 0 || selectedGenres.includes(video.genre_id);
 
