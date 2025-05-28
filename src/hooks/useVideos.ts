@@ -61,7 +61,7 @@ export const useVideos = (): UseVideosResult => {
       const searchTermLower = debouncedSearchTerm.toLowerCase().trim();
 
       const matchesSearch =
-        searchTerm === "" ||
+        searchTermLower === "" ||
         videoArtist.includes(searchTermLower) ||
         videoTitle.includes(searchTermLower);
 
@@ -73,7 +73,7 @@ export const useVideos = (): UseVideosResult => {
 
       return matchesSearch && matchesYear && matchesGenre;
     });
-  }, [videos, debouncedSearchTerm, searchTerm, selectedYear, selectedGenres]);
+  }, [videos, debouncedSearchTerm, selectedYear, selectedGenres]);
 
   const toggleGenre = (genreId: number) => {
     setSelectedGenres((prev) =>
