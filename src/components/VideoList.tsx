@@ -1,7 +1,7 @@
-import React from 'react';
-import { Grid, Box, Typography, CircularProgress } from '@mui/material';
-import VideoCard from './VideoCard';
-import { Video } from '../types';
+import React from "react";
+import { Grid, Box, Typography, CircularProgress } from "@mui/material";
+import VideoCard from "./VideoCard";
+import { Video } from "../types";
 
 interface VideoListProps {
   videos: Video[];
@@ -12,39 +12,54 @@ interface VideoListProps {
 const VideoList: React.FC<VideoListProps> = ({ videos, loading, error }) => {
   if (loading) {
     return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-        <CircularProgress color="primary" />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50vh",
+        }}
+      >
+        <CircularProgress color='primary' />
       </Box>
     );
   }
 
   if (error) {
     return (
-      <Box sx={{ textAlign: 'center', my: 4, p: 3, bgcolor: '#FFF4F5', borderRadius: 2 }}>
-        <Typography variant="h6" color="error" gutterBottom>
+      <Box
+        sx={{
+          textAlign: "center",
+          my: 4,
+          p: 3,
+          bgcolor: "#FFF4F5",
+          borderRadius: 2,
+        }}
+      >
+        <Typography variant='h6' color='error' gutterBottom>
           Error Loading Videos
         </Typography>
-        <Typography color="error.light">
-          {error.message}
-        </Typography>
+        <Typography color='error.light'>{error.message}</Typography>
       </Box>
     );
   }
 
   if (videos.length === 0) {
     return (
-      <Box sx={{ 
-        textAlign: 'center', 
-        my: 8, 
-        p: 4, 
-        bgcolor: '#F9FAFB', 
-        borderRadius: 2,
-        border: '1px dashed #CBD5E1'
-      }}>
-        <Typography variant="h5" color="text.secondary" gutterBottom>
+      <Box
+        sx={{
+          textAlign: "center",
+          my: 8,
+          p: 4,
+          bgcolor: "#F9FAFB",
+          borderRadius: 2,
+          border: "1px dashed #CBD5E1",
+        }}
+      >
+        <Typography variant='h5' color='text.secondary' gutterBottom>
           No videos were found
         </Typography>
-        <Typography variant="body1" color="text.secondary">
+        <Typography variant='body1' color='text.secondary'>
           Try adjusting your search filters to find more results.
         </Typography>
       </Box>
